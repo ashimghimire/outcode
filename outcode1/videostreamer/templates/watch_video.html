@@ -1,0 +1,26 @@
+
+
+
+
+<h1>{{ video.title }}</h1>
+<p>{{ video.description }}</p>
+
+<video controls>
+    <source src="{{ video.get_stream_url }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<button id="download-btn" onclick="downloadVideo()">Download Video</button>
+
+
+
+<script>
+    // Function to handle the video download
+    function downloadVideo() {
+      const downloadUrl = "{{ video.get_stream_url }}";
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      a.download = "{{ video.title }}.mp4";  // The file name when downloaded
+      a.click();
+    }
+</script>
